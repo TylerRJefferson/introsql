@@ -1,10 +1,11 @@
 import pg from "pg";
-const { Pool } = pg;
+import readline from "readline-sync";
+const {Pool} = pg;
 import { creds } from "./creds.js";
 
 const pool = new Pool(creds);
 
-const query = "SELECT * FROM customers full join  orders on customers.customerid = orders.customerid";
+const query = "SELECT * FROM customers";
 
 pool.query(query, (err, data) => {
   if (err) {
